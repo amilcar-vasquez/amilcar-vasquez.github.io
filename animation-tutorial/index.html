@@ -1,0 +1,57 @@
+<!--CMPS3141-HCI - AS2-24S1
+Collaborators: Amilcar Vasquez
+Date: Sept.6.24
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>CSS Animation Demo</title>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="styles.css">
+     <script type="module" src="index.js" defer></script>
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+ </head>
+ <body>
+    
+    <div id="app">
+        <header>
+            <h1>Hello Web Dev Students!</h1>
+            <p>Do you love football? Today we will learn how to control a ball using the CSS animate property.</p>
+        </header>
+        <main>
+            <section class="code-display">             
+                <h2>{{ slides[currentSlideIndex].title }}</h2>
+                    <div class="slider-container">
+                        <p>{{ slides[currentSlideIndex].content }}</p>
+                    </div>
+                    <button @click="previousSlide">Previous</button>
+                    <button @click="nextSlide">Next</button>
+                    <h2>CSS Code</h2>
+                <pre><code class="language-css">{{ cssCode }}</code></pre>
+                <pre><code class="language-css">{{ keyFrameCSS }}</code></pre>
+            </section>
+            <section class="animation-container">
+                <h2>Animation:</h2>
+                <div class="football" :class="[{ pass: isBeingPassed }, { animate: isAnimating }]":style="{animationDuration: animationSpeed + 's' }"></div>
+                <button @click="toggleAnimation(); nextSlide()">
+                    {{isAnimating ? 'Stop Controlling' : 'Control the ball' }}
+                </button>
+                <button @click="togglePassing()">
+                    {{isBeingPassed ? 'Stop Passing the Ball' : 'Pass the Ball'}}
+                </button>
+                <label for="speed-slider">Adjust Speed: {{ animationSpeed }}s</label>
+                <input type="range" id="speed-slider" v-model="animationSpeed" min="0.5" max="5" step="0.1">
+                <p class="tickers">{{ funTickers() }}</p>
+            </section>          
+        </main>
+        <footer>
+
+            <p>&copy; 2024 Amilcar Vasquez</p>
+        </footer>
+    </div>
+ </body>
+ </html>
+ 
