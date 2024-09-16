@@ -86,31 +86,142 @@
             <input type="radio" name="q4" value="verify"> To verify the packet's source<br>
         </div>
 
-        <!-- Add more questions up to 34 following this format -->
+        <!-- Question 5 -->
+        <div class="question">
+            <label for="q5">5) With TCP/IP data encapsulation, which range of port numbers identifies well-known ports?</label>
+            <input type="radio" name="q5" value="0-1023"> 0 to 1023<br>
+            <input type="radio" name="q5" value="1024-49151"> 1024 to 49151<br>
+            <input type="radio" name="q5" value="49152-65535"> 49152 to 65535<br>
+        </div>
 
-        <!-- Submit Button -->
-        <button type="button" class="submit-btn" onclick="submitQuiz()">Submit</button>
+        <!-- Question 6 -->
+        <div class="question">
+            <label for="q6">6) What statement describes the purpose of a default route?</label>
+            <input type="radio" name="q6" value="default-route"> A host uses a default route to transfer data to a host outside the local network when no other route to the destination exists.<br>
+            <input type="radio" name="q6" value="static-route"> A static route provides a backup path for the network.<br>
+            <input type="radio" name="q6" value="routing-table"> Routing tables hold the static and dynamic routes.<br>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question">
+            <label for="q7">7) What is the proper order of the layers of the OSI model from the highest layer to the lowest layer?</label>
+            <input type="radio" name="q7" value="app-phy"> Application, presentation, session, transport, network, data link, physical<br>
+            <input type="radio" name="q7" value="phy-app"> Physical, data link, network, transport, session, presentation, application<br>
+            <input type="radio" name="q7" value="net-phy"> Network, transport, session, application, presentation, physical, data link<br>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question">
+            <label for="q8">8) When a server responds to a web request, what occurs next in the encapsulation process after the web page data is formatted and separated into TCP segments?</label>
+            <input type="radio" name="q8" value="add-ip"> The server adds the source and destination IP addresses to each segment header to deliver the packets to the destination.<br>
+            <input type="radio" name="q8" value="add-mac"> The server adds the MAC address to the packet.<br>
+            <input type="radio" name="q8" value="add-port"> The server adds the port number to the packet.<br>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question">
+            <label for="q9">9) Which term refers to a network that provides secure access to the corporate offices by suppliers, customers, and collaborators?</label>
+            <input type="radio" name="q9" value="intranet"> Intranet<br>
+            <input type="radio" name="q9" value="extranet"> Extranet<br>
+            <input type="radio" name="q9" value="internet"> Internet<br>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question">
+            <label for="q10">10) What is a characteristic of multicast messages?</label>
+            <input type="radio" name="q10" value="single-destination"> They are sent to a single destination.<br>
+            <input type="radio" name="q10" value="multiple-specific-destinations"> They are sent to all hosts on a network.<br>
+            <input type="radio" name="q10" value="group-specific-destinations"> They are sent to a select group of hosts.<br>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="question">
+            <label for="q11">11) What is the purpose of the OSI model?</label>
+            <input type="radio" name="q11" value="standard"> To standardize the way different types of computers communicate with one another.<br>
+            <input type="radio" name="q11" value="troubleshoot"> To troubleshoot and resolve hardware issues.<br>
+            <input type="radio" name="q11" value="physical"> To define physical hardware components.<br>
+        </div>
+
+        <!-- Question 12 -->
+        <div class="question">
+            <label for="q12">12) What are two characteristics of IP? (Choose two)</label>
+            <input type="checkbox" name="q12" value="ip-connection"> It guarantees packet delivery.<br>
+            <input type="checkbox" name="q12" value="ip-reliability"> It is connectionless.<br>
+            <input type="checkbox" name="q12" value="ip-frag"> It can fragment and reassemble packets.<br>
+        </div>
+
+        <!-- Question 13 -->
+        <div class="question">
+            <label for="q13">13) Which type of address does a switch use to build a switching table?</label>
+            <input type="radio" name="q13" value="mac-address"> MAC address<br>
+            <input type="radio" name="q13" value="ip-address"> IP address<br>
+            <input type="radio" name="q13" value="port-number"> Port number<br>
+        </div>
+
+        <!-- Question 14 -->
+        <div class="question">
+            <label for="q14">14) What protocol resolves a known IP address to an unknown MAC address?</label>
+            <input type="radio" name="q14" value="arp"> ARP<br>
+            <input type="radio" name="q14" value="dns"> DNS<br>
+            <input type="radio" name="q14" value="icmp"> ICMP<br>
+        </div>
+
+        <!-- Question 15 -->
+        <div class="question">
+            <label for="q15">15) Which device breaks up collision domains?</label>
+            <input type="radio" name="q15" value="switch"> Switch<br>
+            <input type="radio" name="q15" value="router"> Router<br>
+            <input type="radio" name="q15" value="hub"> Hub<br>
+        </div>
+
+        <!-- Question 16 to 34 (Add more questions following the same structure) -->
+        <!-- Continue adding more questions as needed up to question 34 -->
+
+        <button type="button" class="submit-btn" onclick="calculateScore()">Submit</button>
     </form>
 
-    <div class="result" id="result"></div>
+    <div id="result" class="result"></div>
 </div>
 
 <script>
-    function submitQuiz() {
+    function calculateScore() {
+        const totalQuestions = 34;
         let score = 0;
-        const totalQuestions = 4;  // Update with total number of questions
 
-        const q1 = document.querySelector('input[name="q1"]:checked');
-        const q2 = document.querySelector('input[name="q2"]:checked');
-        const q3 = document.querySelector('input[name="q3"]:checked');
-        const q4 = document.querySelector('input[name="q4"]:checked');
-        
-        if (q1 && q1.value === "network") score++;
-        if (q2 && q2.value === "router") score++;
-        if (q3 && q3.value === "local") score++;
-        if (q4 && q4.value === "forward") score++;
+        const answers = {
+            q1: "network",
+            q2: "router",
+            q3: "local",
+            q4: "forward",
+            q5: "0-1023",
+            q6: "default-route",
+            q7: "app-phy",
+            q8: "add-ip",
+            q9: "extranet",
+            q10: "group-specific-destinations",
+            q11: "standard",
+            q12: ["ip-reliability", "ip-frag"],
+            q13: "mac-address",
+            q14: "arp",
+            q15: "switch",
+            // Add correct answers for remaining questions up to q34
+        };
 
-        // Repeat for all questions
+        for (let i = 1; i <= totalQuestions; i++) {
+            const q = document.querySelector(`input[name="q${i}"]:checked`);
+            const correctAnswer = answers[`q${i}`];
+
+            if (Array.isArray(correctAnswer)) {
+                // Handle checkbox questions for multiple correct answers
+                const selected = document.querySelectorAll(`input[name="q${i}"]:checked`);
+                let isCorrect = Array.from(selected).every(input => correctAnswer.includes(input.value));
+                if (isCorrect) {
+                    score++;
+                }
+            } else if (q && q.value === correctAnswer) {
+                score++;
+            }
+        }
 
         const result = document.getElementById('result');
         result.style.display = 'block';
