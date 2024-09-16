@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Design Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .quiz-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h2>Network Design Quiz</h2>
+
+    <form id="quiz-form">
+        <!-- Question 1 -->
+        <div class="question">
+            <label for="q1">1) Which portion of the network layer address does a router use to forward packets?</label>
+            <input type="radio" name="q1" value="network"> Network portion<br>
+            <input type="radio" name="q1" value="host"> Host portion<br>
+            <input type="radio" name="q1" value="subnet"> Subnet portion<br>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <label for="q2">2) Which network layer device can separate a network into different broadcast domains?</label>
+            <input type="radio" name="q2" value="router"> Router<br>
+            <input type="radio" name="q2" value="switch"> Switch<br>
+            <input type="radio" name="q2" value="hub"> Hub<br>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <label for="q3">3) If the default gateway is configured incorrectly on the host, what is the impact on communications?</label>
+            <input type="radio" name="q3" value="local"> The host can communicate with other hosts on the local network, but is unable to communicate with hosts on remote networks.<br>
+            <input type="radio" name="q3" value="remote"> The host can communicate with remote networks, but not local networks.<br>
+            <input type="radio" name="q3" value="none"> The host cannot communicate with any other devices.<br>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+            <label for="q4">4) Why are port numbers included in the TCP header of a segment?</label>
+            <input type="radio" name="q4" value="forward"> To enable a receiving host to forward the data to the appropriate application<br>
+            <input type="radio" name="q4" value="track"> To track the packet across the internet<br>
+            <input type="radio" name="q4" value="verify"> To verify the packet's source<br>
+        </div>
+
+        <!-- Add more questions up to 34 following this format -->
+
+        <!-- Submit Button -->
+        <button type="button" class="submit-btn" onclick="submitQuiz()">Submit</button>
+    </form>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function submitQuiz() {
+        let score = 0;
+        const totalQuestions = 4;  // Update with total number of questions
+
+        const q1 = document.querySelector('input[name="q1"]:checked');
+        const q2 = document.querySelector('input[name="q2"]:checked');
+        const q3 = document.querySelector('input[name="q3"]:checked');
+        const q4 = document.querySelector('input[name="q4"]:checked');
+        
+        if (q1 && q1.value === "network") score++;
+        if (q2 && q2.value === "router") score++;
+        if (q3 && q3.value === "local") score++;
+        if (q4 && q4.value === "forward") score++;
+
+        // Repeat for all questions
+
+        const result = document.getElementById('result');
+        result.style.display = 'block';
+        result.innerHTML = `You scored ${score} out of ${totalQuestions}.`;
+
+        // Customize feedback as needed
+    }
+</script>
+
+</body>
+</html>
